@@ -1,7 +1,6 @@
 package it.esedra.galleriatesti.fragments;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,19 +13,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.nio.Buffer;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayDeque;
-import java.util.Scanner;
 
 import it.esedra.galleriatesti.MainActivity;
 import it.esedra.galleriatesti.R;
@@ -64,36 +56,17 @@ public class TextsFragment extends Fragment {
         builder = new StringBuilder();
 
         try(BufferedReader reader = new BufferedReader(isr)) {
-            //line = reader.readLine();
             while((line = reader.readLine()) != null) {
                 lines.addLast(line);
-                //line = reader.readLine();
             }
         } catch(IOException e) {
             e.printStackTrace();
         }
 
-
         change_button.setOnClickListener((v1) -> {
-
             String text = lines.poll();
             texts_view.setText(text);
             lines.addLast(text);
-
-            /*try(BufferedReader reader = new BufferedReader(isr)) {
-
-                line = reader.readLine();
-                while (line != null) {
-                    builder.append(line).append("\n");
-                    texts_view.setText(builder.toString());
-                    line = reader.readLine();
-                    }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-             */
         });
 
         back_button.setOnClickListener((v2) -> {

@@ -18,7 +18,6 @@ import it.esedra.galleriatesti.R;
 public class ImagesFragment extends Fragment {
 
     private Context context;
-    private int flag = 0;
 
     public ImagesFragment(Context context) {
         this.context = context;
@@ -36,23 +35,6 @@ public class ImagesFragment extends Fragment {
 
         images_view.setOnClickListener((v1) -> {
            fade(images_view);
-            /*if(flag == 0) {
-                images_view.animate().alpha(0).setDuration(200).start();
-                flag = 1;
-            } else {
-                //if(flag == 1) {
-                    images_view.animate().alpha(1).setDuration(200).start();
-                    flag = 0;
-                //}
-            }
-
-             */
-
-            /*if(images_view.getAlpha() == 0){
-                images_view.animate().alpha(1).setDuration(200).start();
-            } else {
-                images_view.animate().alpha(0).setDuration(200).start();
-            }*/
         });
 
         view.setOnClickListener((view1) -> {
