@@ -35,21 +35,43 @@ public class ImagesFragment extends Fragment {
         images_view.setImageResource(R.drawable.franchino);
 
         images_view.setOnClickListener((v1) -> {
-            if(flag == 0) {
+           fade(images_view);
+            /*if(flag == 0) {
                 images_view.animate().alpha(0).setDuration(200).start();
                 flag = 1;
             } else {
-                if(flag == 1) {
+                //if(flag == 1) {
                     images_view.animate().alpha(1).setDuration(200).start();
                     flag = 0;
-                }
+                //}
             }
+
+             */
+
+            /*if(images_view.getAlpha() == 0){
+                images_view.animate().alpha(1).setDuration(200).start();
+            } else {
+                images_view.animate().alpha(0).setDuration(200).start();
+            }*/
+        });
+
+        view.setOnClickListener((view1) -> {
+            fade(images_view);
         });
 
         back_button2.setOnClickListener((v2) -> {
-            MainActivity.fragmentManager.beginTransaction().replace(R.id.container_fragment, new MainMenuFragment(context)).commit();
+            MainActivity.fragmentManager.beginTransaction()
+                    .replace(R.id.container_fragment, new MainMenuFragment(context)).commit();
         });
 
         return view;
+    }
+
+    private void fade(ImageView images_view) {
+        if(images_view.getAlpha() == 0){
+            images_view.animate().alpha(1).setDuration(200).start();
+        } else {
+            images_view.animate().alpha(0).setDuration(200).start();
+        }
     }
 }

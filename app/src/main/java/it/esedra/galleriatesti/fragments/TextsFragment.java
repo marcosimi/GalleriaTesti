@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.nio.Buffer;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayDeque;
 import java.util.Scanner;
@@ -38,7 +39,7 @@ public class TextsFragment extends Fragment {
     private InputStreamReader isr;
     private StringBuilder builder;
     private String line;
-    private int flag = 0;
+    private ArrayDeque<String> lines = new ArrayDeque<>();
 
     public TextsFragment(Context context) {
         this.context = context;
@@ -62,10 +63,24 @@ public class TextsFragment extends Fragment {
         isr = new InputStreamReader(fis, StandardCharsets.UTF_8);
         builder = new StringBuilder();
 
+        try(BufferedReader reader = new BufferedReader(isr)) {
+            //line = reader.readLine();
+            while((line = reader.readLine()) != null) {
+                lines.addLast(line);
+                //line = reader.readLine();
+            }
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
 
         change_button.setOnClickListener((v1) -> {
 
-            try(BufferedReader reader = new BufferedReader(isr)) {
+            String text = lines.poll();
+            texts_view.setText(text);
+            lines.addLast(text);
+
+            /*try(BufferedReader reader = new BufferedReader(isr)) {
 
                 line = reader.readLine();
                 while (line != null) {
@@ -77,6 +92,8 @@ public class TextsFragment extends Fragment {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+             */
         });
 
         back_button.setOnClickListener((v2) -> {
