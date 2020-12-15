@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#E4B7C6">
 
     <Button
         android:id="@+id/texts_button"
@@ -37,11 +38,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="116dp"
-        android:background="#AEDEAF"
         android:bufferType="normal"
         android:capitalize="none"
-        android:fontFamily="serif-monospace"
-        android:text="GalleryCycle"
+        android:fontFamily="monospace"
+        android:text="Gallery Cycle"
         android:textSize="30sp"
         android:textStyle="bold"
         android:typeface="serif"
